@@ -1,4 +1,4 @@
-import { Bill, BillStatus } from './types';
+import { Bill } from './types';
 
 export const sleep = (ms: number) =>
   new Promise((resolve) =>
@@ -7,22 +7,33 @@ export const sleep = (ms: number) =>
     }, ms),
   );
 
-function random<T>(arr: T[]) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+const random = <T>(arr: T[]) => arr[Math.floor(Math.random() * arr.length)];
 
-const generateBill = (id: number): Bill => {
+export const generateBill = (id: number): Bill => {
   return {
     id,
-    image: random(['https://placekitten.com/400/300', 'https://placekitten.com/500/400']),
+    image: random([
+      'https://placekitten.com/200/150',
+      'https://placekitten.com/300/200',
+      'https://placekitten.com/400/300',
+      'https://placekitten.com/500/400',
+      'https://placekitten.com/600/500',
+      'https://placekitten.com/700/600',
+      'https://placekitten.com/800/600',
+    ]),
     amount: Math.random() * 100,
-    date: Date.now() - Math.random() * 1000 * 60 * 60 * 24 * 100,
-    status: random([BillStatus.PAID, BillStatus.PROCESS, BillStatus.SCHEDULED, BillStatus.UNABLE_TO_PAY]),
+    ts: Date.now() - Math.floor(Math.random() * 1000 * 60 * 60 * 24 * 100),
+    status: random(['Processing', 'Scheduled', 'Unable to pay', 'Paid']),
   };
 };
 export const fetchBill = async (from: number, pick: number = 10) => {
   await sleep(1000);
-  return new Array(pick).fill(0).map((_, index) => {
+  const data = new Array(pick).fill(0).map((_, index) => {
     return generateBill(from + index);
   });
+
+  return {
+    data,
+    nextFrom: from + pick,
+  };
 };

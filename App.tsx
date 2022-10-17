@@ -8,32 +8,28 @@
  * @format
  */
 
-import React, { type PropsWithChildren } from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
-
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import React from 'react';
+import { SafeAreaView, StatusBar, useColorScheme } from 'react-native';
+import { ThemeProvider } from '@shopify/restyle';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BillList } from './src/components/BillList';
-
+import theme from './src/styling/theme';
+import { ReBox } from './src/styling/primitives';
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    flex:1
-  };
-
+  const queryClient = new QueryClient();
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-     
-     <BillList/>
-    </SafeAreaView>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <SafeAreaView style={{ flex: 1 }}>
+          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+          <ReBox flex={1} >
+            <BillList />
+          </ReBox>
+        </SafeAreaView>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 };
-
-
 
 export default App;

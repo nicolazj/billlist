@@ -1,13 +1,8 @@
-export enum BillStatus {
-  PROCESS ,
-  SCHEDULED ,
-  UNABLE_TO_PAY,
-  PAID ,
-}
+
 export interface Bill {
-    id:number,
+  id: number;
   image: string;
   amount: number;
-  date: number;
-  status: BillStatus;
+  ts: number;
+  status: 'Processing' | 'Scheduled' | 'Unable to pay' | 'Paid';
 }

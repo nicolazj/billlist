@@ -1,0 +1,11 @@
+node_modules
+coverage
+/**/__generated__/*
+# prevent style changes in these files, because they are changes rarely
+babel.config.js
+index.js
+metro.config.js
+apollo.config.js
+react-native.config.js
+setupTests.js
+fileTransformer.js

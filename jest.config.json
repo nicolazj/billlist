@@ -1,0 +1,41 @@
+{
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "preset": "react-native",
+  "setupFilesAfterEnv": [
+    "@testing-library/jest-native/extend-expect",
+    "./node_modules/react-native-gesture-handler/jestSetup.js",
+    "<rootDir>/src/testing/setupTests.js"
+  ],
+  "transformIgnorePatterns": [
+    "node_modules/(?!(jest-)?react-native|@react-native|@react-native-community|@react-navigation|pinar|@react-native-picker/picker|frames-react-native)"
+  ],
+  "resolver": null,
+  "testRegex": "\\.test.(ts|tsx)$",
+  "moduleNameMapper": {
+    "\\.svg$": "<rootDir>/src/testing/fileTransformer.js",
+    "^@components(.*)$": "<rootDir>/src/components/$1",
+    "^@icons(.*)$": "<rootDir>/src/icons/$1",
+    "^@ui-kit(.*)$": "<rootDir>/src/ui-kit/$1",
+    "^@constants(.*)$": "<rootDir>/src/constants/$1",
+    "^@interfaces(.*)$": "<rootDir>/src/interfaces/$1",
+    "^@screens(.*)$": "<rootDir>/src/screens/$1",
+    "^@native": "<rootDir>/src/native/index.ts",
+    "^@stores(.*)$": "<rootDir>/src/stores/$1",
+    "^@utils(.*)$": "<rootDir>/src/utils/$1",
+    "@testing/(.*)": "<rootDir>/src/testing/$1",
+    "^@hooks(.*)$": "<rootDir>/src/hooks/$1",
+    "^@assets(.*)$": "<rootDir>/assets/$1"
+  },
+  "coverageReporters": ["json", "html"],
+  "coverageThreshold": {
+    "global": {
+      "branches": 30,
+      "functions": 30,
+      "lines": 30,
+      "statements": 30
+    }
+  },
+  "clearMocks": true
+}

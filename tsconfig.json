@@ -1,0 +1,76 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "react-native",
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@constants/*": ["./src/constants/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@screens/*": ["./src/screens/*"],
+      "@native": ["./src/native/index.ts"],
+      "@stores/*": ["./src/stores/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@testing/*": ["./src/testing/*"],
+      "@assets/*": ["./assets/*"],
+    },
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "lib": [
+      "es2019",
+      "dom"
+    ],
+    "types" : ["jest"],
+    "sourceMap": true,
+    "allowJs": true,
+
+    // Check documentation below to get more understanding about rules below:
+    // https://www.typescriptlang.org/tsconfig
+    "strict": true,                             // enable strict check for typescript compilation
+    "alwaysStrict": true,
+    "resolveJsonModule": true,                  // allow import .json files in module
+    "noEmit": true,                             // will not generate .js code from .ts files
+
+    "noImplicitAny": true,                      // block declaration of variable with `any` type
+    "noImplicitThis": true,                     // raise error when trying to access `this` which has `any` type definition
+    "noImplicitReturns": true,                  // block wrong typing for function return
+    "noUnusedLocals": true,                     // block unused local variables
+    "noUnusedParameters": true,                 // block unused arguments in functions
+    "noFallthroughCasesInSwitch": true,         // every switch in `switch..case` must have `return` or `break` statement
+
+    "esModuleInterop": true,                    // allow simple default import even if module doesnt contain one
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,                       // will skip duplications of type definition files if will find more that one
+    "suppressImplicitAnyIndexErrors": true,     // block usage `unknown` or `any` properties in objects and arrays
+    "forceConsistentCasingInFileNames": true,   // check case sensitivity of file to be consistent - `fileName` vs `FileName`
+
+    "strictNullChecks": true,                   // strict check for `null` values, `undefined` and `null` will have their own type checking
+    "strictBindCallApply": true,                // check for correct arguments usage of `bind`, `call` and `apply` functions
+    "strictFunctionTypes": true,                // strict check for correct arguments in function to match function type declaration\
+    /*
+     * With typescript > v4.4 usage of this property (`useUnknownInCatchVariables`) is now `true` by default with `"strict": true`,
+     * so `error` in `catch` clause is `unknown` type instead of `any` as it previously was with the older released of ts
+
+     * This leads to errors handling issues, such as passing an argument of `unknown` type to a function,
+     * `normalizeError` for example, which expects for a typed argument to be passed to it instead -
+     * `Argument of type 'unknown' is not assignable to parameter of type 'NormalizeErrorProps'`
+     *
+     * Since we are not using a type based error handling strategy in the project
+     * this should be `false` to avoid such errors or any other poor possible solutions, such as type casting
+     * */
+    "useUnknownInCatchVariables": false
+  },
+  "include": [
+    "./src/**/*",
+    "./types/global.d.ts",
+    "./types/unknown-modules.d.ts",
+  ],
+  "exclude": [
+    "./src/**/__generated__/*",
+    "babel.config.js",
+    "metro.config.js",
+    "jest.config.js"
+  ]
+}

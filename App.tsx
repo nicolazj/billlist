@@ -23,7 +23,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <SafeAreaView style={{ flex: 1 }}>
           <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-          <ReBox flex={1} >
+          <ReBox flex={1}>
             <BillList />
           </ReBox>
         </SafeAreaView>

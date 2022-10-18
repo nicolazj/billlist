@@ -35,3 +35,26 @@ The project was built using `yarn` as the package manager. Some of the scripts a
 
 See `package.json` for additional useful scripts.
 
+---
+
+## demo.gif
+
+![This is an image](./deferit.gif)
+
+## Note
+* this exercise took me around 3 hours
+* I didnt use https://reactnativeelements.com/, I'd prefer starting with StyleSheet.create or libs like Shopify/restyle, so i can have more control of UI components. the good thing of Shopify/restyle is its type safe and theme based lightweight styling solution. 
+* With React Query, no state management libs required at this stage.
+## Libs I used in this exercise:
+* Flashlist for list component https://shopify.github.io/flash-list/
+* React Query for data fetching 
+* Restyled for styling system https://github.com/Shopify/restyle
+* react-native-image-viewing for image viewer
+* react-native-popable for popover
+* day.js + numeral for string formatting
+
+## Todos
+* Error handling 
+* To add a spinner/indicator when loading next page
+* To provide a default image for Image component
+* 

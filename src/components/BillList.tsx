@@ -23,6 +23,7 @@ export const BillList = () => {
   if (status === 'loading') {
     return <Loading />;
   } else if (status === 'error') {
+    // TODO
     return null;
   }
 
@@ -30,7 +31,7 @@ export const BillList = () => {
     <ReBox flex={1}>
       <FlashList
         data={bills}
-        renderItem={BillItem}
+        renderItem={({ item }) => <BillItem bill={item} />}
         estimatedItemSize={100}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.2}

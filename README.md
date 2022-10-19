@@ -1,4 +1,4 @@
-# React Native Recruitment Exercise
+# React Native Recruitment Exercise (Deferit)
 
 **Brief**: Bills list view
 
